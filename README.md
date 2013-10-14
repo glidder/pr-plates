@@ -1,4 +1,4 @@
-pr-plates
-=========
+pr-plates - Grupo Gayumbos
+==========================
 
-Trabajo grupal para Reconocimeinto de Patrones
+Trabajo grupal para Reconocimiento de Patrones
