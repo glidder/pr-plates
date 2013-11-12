@@ -9,10 +9,7 @@ function [] = RecortaMatriculas()
     cd ..
 
     B = rgb2gray(A);
-    figure, imshow(B, [])
-    
-    EB = imerode(B, ones(20));
-    figure, imshow(EB, [])
-    EB = imerode(B, zeros(3));
-    figure, imshow(EB, [])
+    figure, imshow(, [])
+    G = imnoise(B, 'gaussian');
+    figure, plot(G)
 end
