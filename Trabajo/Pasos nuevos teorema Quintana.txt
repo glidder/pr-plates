@@ -1,0 +1,3 @@
+filtro gaussiano para quitar brillo.
+Resaltar rectangulos blancos con algún filtro.
+CROPING A REGTANGLE OF QUINTANA
