@@ -1,0 +1,4 @@
+
+1) Entrega parcial de diciembre "detectaMatriculas.m" tiene un aciento de:
+	--------------------> 133 sobre 172 <--------------------
+	-------------------->   prox 77%    <--------------------
