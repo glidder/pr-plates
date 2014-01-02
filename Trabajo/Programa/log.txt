@@ -1,11 +1,11 @@
 ---------------- Principales ----------------
 
 reconocedor.m
-entrna.m
+entrena.m
 
 ---------------- Esenciales ----------------
 
-obtenerMatricula.m
+obtenerMatricula.m   Quintaneared
 obtenerAlfanumericos.m
 reconocerAlfanumerico.m
 
