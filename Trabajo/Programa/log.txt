@@ -1,0 +1,15 @@
+---------------- Principales ----------------
+
+reconocedor.m
+entrna.m
+
+---------------- Esenciales ----------------
+
+obtenerMatricula.m
+obtenerAlfanumericos.m
+reconocerAlfanumerico.m
+
+---------------- Estructura ----------------
+directorio - RPTrain
+directorio - RPRecon
+directorio - Muestras
