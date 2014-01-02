@@ -2,9 +2,7 @@
     clc
     A=0;
     for i = 1 : 172
-    	cd ..
-    	cd RPtrain
-        I = imread(['Coche' num2str(i,'%03d') '.jpg']);
+        I = imread(['RPtrain/Coche' num2str(i,'%03d') '.jpg']);
         cd ..
         cd Programa
         [M, T] = obtenerMatricula(I);
