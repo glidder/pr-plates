@@ -1,6 +1,4 @@
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%FOR TESTING POURPOSES ONLY
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%Función que recibe la fotografía de un coche, recorta la matrícula y la devuelve. También devuelve 
 function [M, T] = obtenerMatricula(Im)
 		T=false; % 
         hsdf = rgb2hsv(Im);
@@ -18,18 +16,17 @@ function [M, T] = obtenerMatricula(Im)
         end
         stat = regionprops(lblMatrix,'boundingbox');
         
-        figure, imshow(Im); hold on;
-        for cnt = 1 : numel(stat)
-        	bb = stat(cnt).BoundingBox;
-        	rectangle('position',bb,'edgecolor','b','linewidth',2);
-        end
-        hold off;
+        %imshow(I); hold on;
+        %for cnt = 1 : numel(stat)
+        %	bb = stat(cnt).BoundingBox;
+        %	rectangle('position',bb,'edgecolor','b','linewidth',2);
+        %end
+        %hold off;
         shpNum = 0;
         RM = 0;
-        M=Im;
         for cnt = 1 : numel(stat)
             bb = stat(cnt).BoundingBox;
-            if (bb(1,3) < 300 && bb(1,3) > 90 && bb(1,4) < 70 && bb(1,3) / bb(1,4) > 3.5 && bb(1,3) / bb(1,4) < 6.2) %|| (bb(1,3) < 300 && bb(1,3) > 90 && bb(1,4))%bb(1,3) / bb(1,4) > 4 && bb(1,3) / bb(1,4) < 6.2)
+            if (bb(1,3) < 300 && bb(1,3) > 90 && bb(1,4) < 70 && bb(1,3) / bb(1,4) > 3.5 && bb(1,3) / bb(1,4) < 6.2)%bb(1,3) / bb(1,4) > 4 && bb(1,3) / bb(1,4) < 6.2)
                 %x = bb(1,1);
                 %y = bb(1,2);
                 %Color = impixel(I,x + 2,y + 2);
@@ -48,11 +45,19 @@ function [M, T] = obtenerMatricula(Im)
                 shpNum = shpNum + 1;
             end
         end
-        	figure, imshow(M)
+        if shpNum~=0
+        	subplot(1,2,1),subimage(Im)
+        	subplot(1,2,2),subimage(M)
         	opcion=questdlg('¿Aceptar matricula?','Aceptar matricula','Si','No','Si');
-        	if strcmp(opcion,'Si')
+        	if strcmp(opcion,'No')
+        		shpNum=0;
+        	else
         		T=true;
         	end
+        end
+        if shpNum==0
+        	figure, M=imcrop(Im);
+        end
 end
 
 function M = ruido(B)

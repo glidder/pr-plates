@@ -1,12 +1,12 @@
 ---------------- Principales ----------------
 
-reconocedor.m
+reconoce.m
 entrena.m
 
 ---------------- Esenciales ----------------
 
 obtenerMatricula.m   Quintaneared
-obtenerAlfanumericos.m
+obtenerAlfanumericos.   Quintaneared
 reconocerAlfanumerico.m
 
 ---------------- Estructura ----------------
