@@ -34,7 +34,7 @@ stat = regionprops(Ilabel);
 %        lblMatrix(imerode(currentObject, strel('disk', 1))) = 0;
 %    end
 %    stat = regionprops(lblMatrix,'boundingbox');
-if (numel(stat)<6)
+if (numel(stat)<5)
 	bw = im2bw(BC, 0.6);
 	figure, imshow(bw);
 	[Ilabel num] = bwlabel(bw);
