@@ -1,4 +1,7 @@
 function C = obtenerCaracter (I)
+	[x,y,z]=size(I)
+	I=I(:,round(y*0.03):y-round(y*0.03),:);
+	figure, imshow(I);
 	BC = imadjust(I, [0 1], [1 0]);
 	%BC=im2bw(BC);
 	figure, imshow(BC);
@@ -34,7 +37,15 @@ stat = regionprops(Ilabel);
 %        lblMatrix(imerode(currentObject, strel('disk', 1))) = 0;
 %    end
 %    stat = regionprops(lblMatrix,'boundingbox');
-if (numel(stat)<6)
+MAUX=0;
+[x,y]=size(bw);
+for cnt = 1 : numel(stat)
+	bb = stat(cnt).BoundingBox;
+	if(bb(1,4)>(x/2) && bb(1,3)>1 && bb(1,3)<(y/5))
+		MAUX=MAUX+1;
+	end
+end
+if (MAUX<6)
 	bw = im2bw(BC, 0.6);
 	figure, imshow(bw);
 	[Ilabel num] = bwlabel(bw);
@@ -46,7 +57,7 @@ end
         	rectangle('position',bb,'edgecolor','b','linewidth',2);
         end
     hold off;
-    [x,y]=size(bw)
+    [x,y]=size(bw);
     for cnt = 1 : numel(stat)
         bb = stat(cnt).BoundingBox
         if(bb(1,4)>(x/2) && bb(1,3)>1 && bb(1,3)<(y/5))
