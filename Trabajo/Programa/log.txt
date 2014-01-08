@@ -13,3 +13,16 @@ reconocerAlfanumerico.m
 directorio - RPTrain
 directorio - RPRecon
 directorio - Muestras
+
+--------------------------------------------
+
+< Quintaneared >
+ --------------
+    \
+     \
+    ^__^         /
+    (oo)\_______/  _________
+    (__)\       )=(  ____|_ \_____
+        ||----w |  \ \     \_____ |
+        ||     ||   ||           ||
+
