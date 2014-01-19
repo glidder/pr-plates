@@ -29,6 +29,7 @@ function Num = clasificaCaracter( C, N )
 	P1
 	P2
 	P3
+	P4
 	Num=1;
     pause;
 end
