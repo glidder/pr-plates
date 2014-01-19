@@ -22,25 +22,18 @@ function Plantillas = entrena (ruta)
 end
 
 function Num = clasificaCaracter( C )
+	P1 = zeros(1,10);
+	P2 = zeros(1,10);
+	P3 = zeros(1,10);
     for i=1:7
-		P1=P1 + C(i, :)
-		P2=P2 + C(i+7, :)
-		P3=P3 + C(i+14, :)
+		P1=P1 + C(i, :);
+		P2=P2 + C(i+7, :);
+		P3=P3 + C(i+14, :);
 	end
+	P1
+	P2
+	P3
 	Num=1;
-    pause;
-end
-function Num = clasificaCaracter( C )
-	C
-    Total=sum(C(:));
-    Abs=Total/210
-    P1=sum(sum(C(1:7, 1:10)));
-    P1=P1/210
-    P2=sum(sum(C(8:14, 1:10)));
-    P2=P2/210
-    P3=sum(sum(C(15:21, 1:10)));
-    P3=P3/210
-    Num=1;
     pause;
 end
 
