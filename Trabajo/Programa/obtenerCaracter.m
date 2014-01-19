@@ -1,5 +1,5 @@
 function C = obtenerCaracter (I)
-	[xt,y,z]=size(I)
+	[xt,y,z]=size(I);
 	I=I(:,round(y*0.03):y-round(y*0.03),:);
 	figure, imshow(I);
 	BC = imadjust(I, [0 1], [1 0]);
@@ -58,11 +58,14 @@ end
         end
     hold off;
     [x,y]=size(bw);
+    aux=1;
     for cnt = 1 : numel(stat)
-        bb = stat(cnt).BoundingBox
+        bb = stat(cnt).BoundingBox;
         if(bb(1,4)>(x/2) && bb(1,3)>1 && bb(1,3)<(y/5) && bb(1,4)<round(xt*0.95))
-        C{cnt}=imcrop(I,bb);
-        figure, imshow(C{cnt});
+        C{aux}=imcrop(I,bb);
+        aux=aux+1;
+        figure, imshow(C{aux-1});
+        end
     end
 
 end
