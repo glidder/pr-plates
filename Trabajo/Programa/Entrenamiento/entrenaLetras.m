@@ -1,4 +1,4 @@
-function Plantillas = entrena (ruta)
+function Plantillas = entrenaLetras (ruta)
 	listafotos = dir(ruta);
 	Totales = zeros(1,35);
 	for i=3:size(listafotos,1)
