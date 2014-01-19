@@ -6,6 +6,7 @@ for i=3:size(listafotos,1)
             I = imread([ruta fnombre]);
             [M, T] = obtenerMatricula(I);
             C = obtenerCaracter(M);
+            close all;
         for k=1:length(C)
         	C{k} = imadjust(C{k}, [0 1], [1 0]);
             C{k} = im2bw(C{k}, 0.75);

@@ -62,7 +62,7 @@ end
     for cnt = 1 : numel(stat)
         bb = stat(cnt).BoundingBox;
         if(bb(1,4)>(x/2) && bb(1,3)>1 && bb(1,3)<(y/5) && bb(1,4)<round(xt*0.95))
-        C{aux}=imcrop(I,bb);
+        C{aux}=imcrop(bw,bb);
         aux=aux+1;
         figure, imshow(C{aux-1});
         end
