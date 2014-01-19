@@ -1,37 +1,35 @@
 function Plantillas = entrena (ruta)
-listafotos = dir(ruta);
-Totales = zeros(1,35);
-for i=3:size(listafotos,1)
-    fnombre = listafotos(i).name
-            I = imread([ruta fnombre]);
-            [M, T] = obtenerMatricula(I);
-            C = obtenerCaracter(M);
+	listafotos = dir(ruta);
+	Totales = zeros(1,35);
+	for i=3:size(listafotos,1)
+    	fnombre = listafotos(i).name
+        I = imread([ruta fnombre]);
+        [M, T] = obtenerMatricula(I);
+        C = obtenerCaracter(M);
+        close all;
         for k=1:length(C)
-        	C{k} = imadjust(C{k}, [0 1], [1 0]);
-            C{k} = im2bw(C{k}, 0.75);
-            Cn(:,:,k)=imresize(C{k}, [30 20]);
+        	Cn(:,:,k)=imresize(C{k}, [21 10]);
         end
         for j = 1 : size(Cn,3)
             aux = clasificaCaracter(Cn(:,:,j));
             Totales(aux)=Totales(aux)+1;
             Caractereres(:,:,aux, Totales(aux))= Cn(:,:,j);
-            
-        end
-end
-Plantillas= generaPlantilla(Caracteres,Totales);
-save('Plantillas.mat','Plantillas');
-        close all;
+    	end
+	end
+	Plantillas= generaPlantilla(Caracteres,Totales);
+	save('Plantillas.mat','Plantillas');
+    close all;
 end
 
 function Num = clasificaCaracter( C )
 	C
     Total=sum(C(:));
     Abs=Total/600
-    P1=sum(sum(C(1:10, 1:20)));
+    P1=sum(sum(C(1:7, 1:10)));
     P1=P1/Total
-    P2=sum(sum(C(11:20, 1:20)));
+    P2=sum(sum(C(8:14, 1:10)));
     P2=P2/Total
-    P3=sum(sum(C(21:30, 1:20)));
+    P3=sum(sum(C(15:21, 1:10)));
     P3=P3/Total
     Num=1;
     pause;
