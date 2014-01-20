@@ -1,0 +1,65 @@
+elseif N==2272202 || N== 
+    letter= 0
+elseif N==31313114 || N== 13133302 || N== 711114
+    letter=1
+elseif N==2311702 || N== 2210702 || N== 2211302
+    letter=2
+elseif N==2231102 || N== 2270702 || N== 14271702
+    letter=3
+elseif N==2021107 || N== 2275807 || N== 2271107 || N==2023127
+    letter =4
+elseif N== 2270202 || N== 14270202 || N== 14551402
+    letter = 5
+elseif N== 2271402 || N== 2331402 
+    letter = 6
+elseif N== 12272702 || N== 12212702 || N==27313302 || N== 12273302
+    letter = 7
+elseif N== 2290202 || N== 2020202 || N== 2330202
+    letter = 8
+elseif N== 2020202 || N== 2110202 || N==
+    letter = 9
+elseif N== 2333131 || N== 2613127
+    letter = 10 %A
+elseif N== 2270202
+    letter = 11% B
+elseif N== 2121202 
+    letter = 12% 'C'
+elseif N== 2272702
+    letter = 13% 'D'
+elseif N== 2141402
+    letter = 14% 'E'
+elseif N== 12141402
+    letter = 15% 'F'
+elseif N== 14275502 || N== 2272302 || N== 14236102
+    letter = 16%'G'
+elseif N== 27020227
+    letter = 17%'H'
+elseif N== 31313114 || N==14080808
+    letter = 18%'I'
+elseif N== 14272727 || N== 14553313
+    letter = 19%'J'
+    ###################################### K
+elseif N== 2121212 
+    letter = 21%'L'
+elseif N==27232927
+	##################################### M
+    letter = 23%'N'
+elseif N==12120202
+    letter = 24%'P'
+elseif N==27140202
+  	#################################### Q
+    letter = 25%'R'
+elseif N==2072702
+    letter = 26%'S'
+elseif N== 33333302 || N== 23232302
+    letter = 27%'T'
+elseif N== 2272727 || N== 2279427
+    letter = 28%'U'
+elseif N== 31313327 
+    letter = 29%'V'
+elseif N== 58020261
+    letter = 30%'W'
+    #################################### X
+    #################################### Y
+elseif N== 2273302 || N== 2083102 || N== 2273314 || N== 14083102 || N== 2083302 || N== 2082702
+    letter = 31%'Z'
