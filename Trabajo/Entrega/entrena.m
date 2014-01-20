@@ -149,27 +149,3 @@ else
 	N
 end
 end
-function Num = clasificaCaracter( C )
-	P1 = zeros(1,10);
-	P2 = zeros(1,10);
-	P3 = zeros(1,10);
-    for i=1:7
-		P1=P1 + C(i, :);
-		P2=P2 + C(i+7, :);
-		P3=P3 + C(i+14, :);
-	end
-	P1
-	P2
-	P3
-	Num=1;
-    pause;
-end
-
-function Plantillas= generaPlantilla(Caracteres,Totales);
-    for i=1:size(Caracteres,3);
-        for j = 2 :Totales(i);
-            aux = Caracteres(:,:,i, j) + Caracteres(:,:,i, j);
-        end
-        Plantillas(:,:,i)=aux/Totales(i);
-    end
-end
