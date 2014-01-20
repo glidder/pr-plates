@@ -47,7 +47,7 @@ function [M, T] = obtenerMatricula(Im)
         end
         if shpNum~=0
         	subplot(1,2,1),subimage(Im)
-        	subplot(1,2,2),subimage(M) %Comprobación manual de aceptación
+        	subplot(1,2,2),subimage(M) %Comprobación manual
         	opcion=questdlg('¿Aceptar matricula?','Aceptar matricula','Si','No','Si');
         	if strcmp(opcion,'No')
         		shpNum=0;
