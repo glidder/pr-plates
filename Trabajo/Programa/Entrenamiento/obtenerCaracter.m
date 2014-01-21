@@ -1,3 +1,12 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Autores:	Luis José Quintana Bolaño
+%			Javier Osuna Herrera
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%
+% Función que recibe la imagen de una matrícula y devuelve un vector de imágenes
+% de los caracteres.
+%
 function C = obtenerCaracter (I)
 	[xt,y,z]=size(I);
 	I=I(:,round(y*0.03):y-round(y*0.03),:);

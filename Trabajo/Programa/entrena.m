@@ -21,7 +21,6 @@ function Plantillas = entrena (ruta)
     close all;
 end
 
-
 function Num = clasificaCaracter( C )
 	P1 = zeros(1,10); P2 = zeros(1,10);	P3 = zeros(1,10); P4 = zeros(1,10);
     for i=1:5
@@ -33,15 +32,25 @@ function Num = clasificaCaracter( C )
     T1=codifica(P1); T2=codifica(P2); T3=codifica(P3); T4=codifica(P4);
 	Cod=T1+(100*T2)+(10000*T3)+(1000000*T4)
     Num=compara(Cod);
-    pause;
+    %pause;
 end
 
 function Plantillas= generaPlantilla(Caracteres,Totales);
     for i=1:size(Caracteres,3);
-        for j = 2 :Totales(i);
-            aux = Caracteres(:,:,i, j) + Caracteres(:,:,i, j);
+    	aux=zeros(20,10);
+        for j = 1 :Totales(i);
+            aux = aux + Caracteres(:,:,i, j);
         end
-        Plantillas(:,:,i)=aux/Totales(i);
+        for j=1:size(aux,1)
+        	for k=1:size(aux,2)
+        		if aux(j,k)/Totales(i)>0.5
+        			aux(j,k)=1;
+        		else
+        			aux(j,k)=0;
+        		end
+        	end
+        end
+        Plantillas(:,:,i)=aux;
     end
 end
 

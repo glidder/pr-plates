@@ -1,45 +1,80 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Autores:	Luis José Quintana Bolaño
+%			Javier Osuna Herrera
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%
+% Función que utiliza imágenes de letras previamente recortadas para realizar
+% el entrenamiento del reconocedor de letras, creando un archivo de Plantillas.
+% Recibe la ruta de la carpeta en la que están las imágenes, terminada en "/".
+%
 function Plantillas = entrenaLetras (ruta)
 	listafotos = dir(ruta);
 	Totales = zeros(1,35);
-	for i=3:size(listafotos,1)
+	for i=3:size(listafotos,1) % Cargando y clasificando todas las fotos
     	fnombre = listafotos(i).name
         C = imread([ruta fnombre]);
         Cn=imresize(C, [20 10]);
         aux = clasificaCaracter(Cn);
         Totales(aux)=Totales(aux)+1;
         Caracteres(:,:,aux, Totales(aux))= Cn;
-	end
-	Plantillas= generaPlantilla(Caracteres,Totales);
+	end	
+	Plantillas= generaPlantilla(Caracteres,Totales); %Generando plantillas
 	save('Plantillas.mat','Plantillas');
     close all;
 end
 
+%
+% Recibe la imágen de un caracter y devuelve un número que corresponde a la
+% posición del número/letra en la lista "1,...,9,A,...,Z,0".
+%
 function Num = clasificaCaracter( C )
-	P1 = zeros(1,10); P2 = zeros(1,10);	P3 = zeros(1,10); P4 = zeros(1,10);
+	P1 = zeros(1,10);
+	P2 = zeros(1,10);
+	P3 = zeros(1,10);
+	P4 = zeros(1,10);
     for i=1:5
 		P1=P1 + C(i, :);
 		P2=P2 + C(i+5, :);
 		P3=P3 + C(i+10, :);
 		P4=P4 + C(i+15, :);
 	end
-    T1=codifica(P1); T2=codifica(P2); T3=codifica(P3); T4=codifica(P4);
-	Cod=T1+(100*T2)+(10000*T3)+(1000000*T4)
-    Num=compara(Cod);
+	C
+	Num=1;
     pause;
 end
 
+%
+% Recibe una matriz de caracteres ordenados y un vector con la cantidad total
+% de muestras de cada caracter y genera las plantillas haciendo la media
+% de cada caracter.
+%
 function Plantillas= generaPlantilla(Caracteres,Totales);
     for i=1:size(Caracteres,3);
-        for j = 2 :Totales(i);
-            aux = Caracteres(:,:,i, j) + Caracteres(:,:,i, j);
+    	aux=zeros(20,10);
+        for j = 1 :Totales(i);%Suma de todas las muestras de cada caracter
+            aux = aux + Caracteres(:,:,i, j);
         end
-        Plantillas(:,:,i)=aux/Totales(i);
+        for j=1:size(aux,1)	%Hace la media de cada caracter
+        	for k=1:size(aux,2)
+        		if aux(j,k)/Totales(i)>0.5
+        			aux(j,k)=1;
+        		else
+        			aux(j,k)=0;
+        		end
+        	end
+        end
+        Plantillas(:,:,i)=aux; %Guarda la plantilla de cada caracter
     end
 end
 
+%
+% Función que compara el código recibido con los correspondientes a cada letra
+% y devuelve la posición de la adecuada en la lista "1,...,9,A,...,Z,0".
+%
 function letra = compara (N)
 if N==2272202 
-    letra= 0
+    letra=32
 elseif N==31313114 || N== 13133302 || N== 7111114
     letra=1
 elseif N==2311702 || N== 2210702 || N== 2211302
@@ -59,9 +94,9 @@ elseif N== 2290202 || N== 2020202 || N== 2330202
 elseif N== 2020202 || N== 2110202 
     letra = 9
 elseif N== 2333131 || N== 2613127
-    letra = 10 %A
+    letra = 10% 'A'
 elseif N== 2270202
-    letra = 11% B
+    letra = 11% 'B'
 elseif N== 2121202 
     letra = 12% 'C'
 elseif N== 2272702
@@ -104,7 +139,7 @@ elseif N== 58020261
 elseif N== 2273302 || N== 2083102 || N== 2273314 || N== 14083102 || N== 2083302 || N== 2082702
     letra = 31%'Z'
 else
-	letra = 32
+	letra = 33
 	disp(['ERROR, LETRA NO ENCONTRADA']);
 	N
 end

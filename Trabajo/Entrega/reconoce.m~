@@ -1,0 +1,115 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Autores:	Luis José Quintana Bolaño
+%			Javier Osuna Herrera
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%
+% Función que recibe la ruta al archivo de imágen de un coche y reconoce 
+% la matrícula, devolviendo el texto de la misma.
+%
+function Mtext = reconoce (Inom)
+    I = imread(Inom);
+    [M, T] = obtenerMatricula(I); %Recorte de la matricula
+    figure, imshow(M);
+    C = obtenerCaracter(M);		  %Recorte de los caracteres
+    Mtext='';
+    for k=1:length(C)	%Reconocimiento de cada caracter
+        	Mtext=[ Mtext ' ' reconocerCaracter(imresize(C{k}, [20 10]))];
+    end
+    Mtext
+    pause;
+    close all;
+end
+
+%
+% Función que recibe la imágen de un caracter y lo reconoce comparandolo con
+% las plantillas generadas en el entrenamiento, devuelviendolo en forma de texto
+%
+function T = reconocerCaracter(C)
+	load('Plantillas.mat'); %Carga el archivo de plantillas del entrenamiento
+	comp=[ ];
+	for n=1:length(Plantillas) %Compara la imagen con cada plantilla
+    	sem=corr2(Plantillas(:,:,n),C); 
+    	comp=[comp sem]; 
+	end
+	N=find(comp==max(comp)); %Encuentra la posición de la más parecida
+	T=encuentra(N); %Devuelve el caracter correspondiente a la posición
+end
+
+%
+% Función que recibe un entero que representa la posición de un caracter
+% en la lista "1,...,9,A,...,Z,0" y devuelve el caracter correspondiente
+%
+function letra = encuentra (N)
+if N==32
+    letra= '0'
+elseif N==1
+    letra='1'
+elseif N==2
+    letra='2'
+elseif N==3
+    letra='3'
+elseif N==4
+    letra ='4'
+elseif N== 5
+    letra = '5'
+elseif N== 6
+    letra = '6'
+elseif N== 7
+    letra = '7'
+elseif N== 8
+    letra = '8'
+elseif N== 9
+    letra = '9'
+elseif N== 10
+    letra ='A'
+elseif N== 11
+    letra = 'B'
+elseif N== 12
+    letra = 'C'
+elseif N== 13
+    letra = 'D'
+elseif N== 14
+    letra = 'E'
+elseif N== 15
+    letra = 'F'
+elseif N== 16
+    letra = 'G'
+elseif N== 17
+    letra ='H'
+elseif N== 18
+    letra ='I'
+elseif N== 19
+    letra = 'J'
+elseif N==20
+	letra = 'K'
+elseif N== 21
+    letra ='L'
+elseif N==23
+    %##################################### M
+    letra ='N'
+elseif N==24
+    letra ='P'
+elseif N== 25
+      %#################################### Q
+    letra ='R'
+elseif N==26
+    letra ='S'
+elseif N== 27
+    letra ='T'
+elseif N== 28
+    letra ='U'
+elseif N== 29
+    letra ='V'
+elseif N== 30
+    letra = 'W'
+    %#################################### X
+    %#################################### Y
+elseif N== 31
+    letra ='Z'
+else
+	letra = '#'
+	disp(['ERROR, LETRA NO ENCONTRADA']);
+	N
+end
+end

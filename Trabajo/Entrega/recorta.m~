@@ -7,7 +7,7 @@
 % Función que recorta y guarda las letras de todas las imágenes guardadas
 % en el directorio recibido como parametro.
 %
-function Plantillas = recorta (ruta)
+function Plantillas = recorta (ruta, ruta2)
 	listafotos = dir(ruta);
 	Totales = zeros(1,35);
 	Tname=0;
@@ -21,9 +21,12 @@ function Plantillas = recorta (ruta)
         end
         C = obtenerCaracter(M);
         close all;
+        if length(C)>0
         for k=1:length(C) %Guardando todas las imágenes
-        	imwrite(C{k},sprintf('Letras/%d.bmp',Tname));
+        	imwrite(C{k},[ruta2 sprintf('%d.bmp',Tname)]);
         	Tname=Tname+1;
         end
+        end
     end
+    Acierto
 end

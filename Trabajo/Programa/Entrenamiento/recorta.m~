@@ -1,3 +1,8 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Autores:	Luis José Quintana Bolaño
+%			Javier Osuna Herrera
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
 function Plantillas = recorta (ruta)
 	listafotos = dir(ruta);
 	Totales = zeros(1,35);
@@ -9,7 +14,7 @@ function Plantillas = recorta (ruta)
         C = obtenerCaracter(M);
         close all;
         for k=1:length(C)
-        	imwrite(C{k},sprintf('Numeros/%d.bmp',Tname));
+        	imwrite(C{k},sprintf('Letras/%d.bmp',Tname));
         	Tname=Tname+1;
         end
     end
